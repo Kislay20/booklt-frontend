@@ -119,7 +119,7 @@ export default function DetailsPage() {
           className="w-full lg:w-[60%] rounded-xl h-[320px] object-cover"
         />
 
-        <div className="lg:w-[35%] mt-6 lg:mt-0 self-start">
+        <div className="w-full lg:w-[35%] mt-6 lg:mt-0 self-start">
           <BookingSummary
             price={Math.round(experience.price)}
             qty={qty}
