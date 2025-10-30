@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Poppins font applied */
+body {
+  @apply bg-white text-gray-800;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+
+/* small helpers to closely match the Figma spacing and styles */
+.card-radius { border-radius: 12px; }
+
+/* container */
+.checkbox-btn {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.75rem;
+}
+
+/* the rounded square box */
+.checkbox-btn .box {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;         /* rounded corners for the square */
+  background: #fff;            /* default bg */
+  border: 2px solid #5B5B5B;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .18s ease, border-color .18s ease, transform .12s ease;
+  box-sizing: border-box;
+}
+
+/* checked state: black bg */
+.checkbox-btn input:checked + .box {
+  background: #000;
+  border-color: #000;
+  transform: translateY(-0.5px);
+}
+
+/* svg sizing (keeps check centered) */
+.checkbox-btn .check {
+  width: 18px;   /* keep tick same as before */
+  height: 18px;
+  display: block;
+  overflow: visible;
+}
+
+/* stroke-draw animation */
+.checkbox-btn .check path {
+  stroke-dasharray: 30;       /* slightly longer than path length */
+  stroke-dashoffset: 30;      /* hidden initially */
+  transition: stroke-dashoffset .28s cubic-bezier(.2,.9,.2,1),
+              opacity .12s linear;
+  opacity: 0;
+}
+
+/* when checked, draw the stroke */
+.checkbox-btn input:checked + .box .check path {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
